@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 class="title">Lista de Precios</h1>
+
+  <!-- Dropdown para seleccionar la categoría -->
+  <mat-form-field>
+    <mat-label>Categoría</mat-label>
+    <mat-select [(value)]="selectedCategory" (selectionChange)="filterProducts()">
+      <!-- Opciones dinámicas de las categorías -->
+      <mat-option *ngFor="let category of categories" [value]="category.id_categoria">
+        {{ category.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  
+  
+  
+
+  <table mat-table [dataSource]="filteredData" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+      <td mat-cell *matCellDef="let product"> {{ product.nombre }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let product"> {{ product.descripcion }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria_nombre">
+      <th mat-header-cell *matHeaderCellDef> Categoría </th>
+      <td mat-cell *matCellDef="let product"> {{ product.categoria_nombre }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef> Stock </th>
+      <td mat-cell *matCellDef="let product"> {{ product.stock }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Precio </th>
+      <td mat-cell *matCellDef="let product"><strong>{{ product.precio | currency }}</strong></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="50" [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+
+  <button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
+</div>

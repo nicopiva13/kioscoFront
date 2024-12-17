@@ -1,0 +1,44 @@
+<h2 mat-dialog-title class="dialog-title">Nuevo Producto</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="outline" class="full-width" style="margin-top: 5px;">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="product.nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput [(ngModel)]="product.descripcion"></textarea>
+  </mat-form-field>
+
+  <div class="row">
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [(ngModel)]="product.precio">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" [(ngModel)]="product.stock">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Categoría</mat-label>
+    <mat-select [(ngModel)]="product.id_categoria">
+      <mat-option *ngFor="let category of categories" [value]="category.id_categoria">
+        {{ category.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Imagen (URL)</mat-label>
+    <input matInput [(ngModel)]="product.imagen">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Guardar</button>
+</div>

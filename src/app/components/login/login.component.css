@@ -1,0 +1,87 @@
+/* Fondo de la página con colores cálidos y diseño alusivo a un kiosko */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: url('https://example.com/kiosko-pattern.png') no-repeat center center fixed; /* Imagen de fondo alusiva a un kiosko */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
+  }
+  
+  /* Contenedor del login centrado */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Caja del formulario con sombras más intensas */
+  .login-box {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente para mostrar un poco del fondo */
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Título del formulario */
+  .login-box h2 {
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Inputs con más espaciado */
+  .login-box input[type="text"],
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #555;
+    background-color: #f7f7f7;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  /* Efecto hover en los inputs */
+  .login-box input:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Color del input al enfocarse */
+  .login-box input:focus {
+    border-color: #ffa726; /* Un tono cálido tipo naranja para simular un kiosko */
+    outline: none;
+    background-color: #fff;
+  }
+  
+  /* Botón con estilo más atractivo */
+  .login-box button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffa726; /* Naranja vibrante */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Efecto hover y sombra en el botón */
+  .login-box button:hover {
+    background-color: #fb8c00; /* Un tono naranja más oscuro */
+    box-shadow: 0 4px 15px rgba(255, 165, 38, 0.4); /* Sombra en hover */
+  }
+  

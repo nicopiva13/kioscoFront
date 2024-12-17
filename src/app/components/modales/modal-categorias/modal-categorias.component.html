@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ data?.category ? 'Editar Categoría' : 'Agregar Categoría' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="categoryForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de la Categoría</mat-label>
+      <input matInput formControlName="nombre" placeholder="Ej: Bebidas">
+      <mat-error *ngIf="categoryForm.get('nombre')?.hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()">Guardar</button>
+</div>
+

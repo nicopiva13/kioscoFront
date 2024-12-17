@@ -1,0 +1,59 @@
+<!-- Título del carrito -->
+<h2 class="cart-title">Productos en el Carrito</h2>
+
+<!-- Botón para cerrar el modal -->
+<button mat-icon-button color="accent" (click)="cerrarModal()" matTooltip="Cerrar carrito" class="close-button">
+    <mat-icon>close</mat-icon>
+</button>
+
+<!-- Mensaje cuando el carrito está vacío -->
+<div *ngIf="productosCarrito.length === 0" class="empty-cart-message">
+    <p>No hay productos en el carrito.</p>
+</div>
+
+<!-- Lista de productos en el carrito -->
+<div class="productos-lista" *ngIf="productosCarrito.length > 0">
+    <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
+        <mat-card-header>
+            <img mat-card-avatar [src]="producto.imagen" alt="{{ producto.nombreProducto }}" />
+            <mat-card-title>{{ producto.nombreProducto }}</mat-card-title>
+            <mat-card-subtitle>Descripción: {{ producto.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>
+                <strong>Cantidad:</strong>
+                <button mat-icon-button color="primary" (click)="decrementarCantidad(producto)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                {{ producto.cantidad }}
+                <button mat-icon-button color="primary" (click)="incrementarCantidad(producto)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </p>
+        </mat-card-content>
+        <button mat-icon-button color="warn" (click)="deleteProduct(producto)">
+            <mat-icon>delete</mat-icon>
+        </button>          
+        <!-- Subtotal para cada producto -->
+        <mat-card-footer>
+            <p class="subtotal">Subtotal: ${{ producto.precio * producto.cantidad }}</p>
+        </mat-card-footer>
+    </mat-card>
+</div>
+
+<!-- Total del carrito -->
+<div *ngIf="productosCarrito.length > 0" class="total-section">
+    <h3>Total: <span class="large-price">${{ calcularTotal() }}</span></h3>
+</div>
+
+<!-- Botones para vaciar el carrito y confirmar la compra -->
+<div class="cart-actions">
+    <button mat-raised-button color="warn" *ngIf="productosCarrito.length > 0" (click)="vaciarCarrito()">
+        <mat-icon>delete</mat-icon> Vaciar Carrito
+    </button>
+    <button mat-raised-button color="primary" *ngIf="productosCarrito.length > 0" class="confirm-purchase-button">
+        Confirmar Compra
+    </button>
+
+</div>

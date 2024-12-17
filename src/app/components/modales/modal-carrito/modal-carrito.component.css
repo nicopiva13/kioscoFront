@@ -1,0 +1,74 @@
+.cart-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #3f51b5;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  position: absolute; /* Permite colocar el botón en la esquina superior derecha */
+  top: 10px; /* Ajusta la posición vertical */
+  right: 10px; /* Ajusta la posición horizontal */
+  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
+}
+
+.empty-cart-message {
+  text-align: center;
+  font-size: 18px;
+  color: #757575;
+}
+
+.productos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Menos espacio entre las filas */
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px; /* Menos padding para filas más bajas */
+}
+
+
+.subtotal {
+  font-weight: bold;
+  color: #000000;
+  text-align: right;
+  font-size: 20px;
+}
+
+
+.large-price {
+  font-weight: bold;
+  font-size: 18px; /* Aumenta el tamaño del precio */
+  color: #000000; /* Color destacado para el precio */
+}
+
+.total-section {
+  text-align: center;
+  font-size: 22px; /* Tamaño más grande para el total */
+  font-weight: bold;
+  color: #d32f2f;
+  margin: 20px 0;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+button.mat-raised-button {
+  text-transform: none;
+}
+
+.confirm-purchase-button {
+  margin-left: auto; /* Empuja el botón a la derecha */
+}

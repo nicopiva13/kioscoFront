@@ -1,0 +1,169 @@
+/* Contenedor principal */
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px; /* Ancho del menú lateral */
+}
+
+.mat-sidenav-content {
+  margin-left: 250px; /* El mismo ancho del menú lateral */
+  transition: margin-left 0.3s ease;
+}
+
+.mat-sidenav-content.sidenav-open {
+  margin-left: 0; /* Cuando el menú está cerrado */
+}
+
+.container {
+  padding: 20px;
+  margin-left: 20px; /* Añadir algo de espacio a la izquierda */
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Estilo para el botón del carrito en la parte superior derecha */
+.open-cart-button {
+  position: absolute; /* Posiciona el botón de forma absoluta */
+  margin-top: 10px; /* Ajusta la distancia desde la parte superior */
+  right: 20px; /* Ajusta la distancia desde la derecha */
+  z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+  margin-right: 10px;
+}
+
+
+
+
+/* Campo de búsqueda */
+.search-field {
+  max-width: 400px;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.product-card {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para mostrar la imagen completa sin recorte */
+.product-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.mat-card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.mat-card-content {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ff6f00;
+  margin: 15px 0;
+}
+
+.stock {
+  color: #388e3c;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.no-stock {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.button-container {
+  position: absolute; /* Permite posicionar el botón en la esquina */
+  bottom: 10px; /* Ajusta el espacio desde el fondo de la tarjeta */
+  right: 10px; /* Ajusta el espacio desde la derecha de la tarjeta */
+  display: flex;
+  justify-content: center; /* Centro el botón dentro de la contenedor */
+}
+
+.button-container button {
+  width: 60px; /* Aumenta el ancho según tus necesidades */
+  height: 60px; /* Aumenta la altura según tus necesidades */
+  border-radius: 50%; /* Botón redondeado */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.button-container button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Color de fondo al pasar el mouse */
+}
+
+.button-container mat-icon {
+  font-size: 28px; /* Tamaño del ícono aumentado */
+  color: #3f51b5; /* Color del ícono */
+}
+
+/* Mensaje de producto agregado */
+.product-added-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #388e3c; /* Verde */
+}
+
+.product-added-message .check-icon {
+  color: #388e3c; /* Verde */
+  margin-right: 5px;
+}
+
+
+/* Responsive: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .product-card img {
+    max-height: 150px;
+  }
+
+  .mat-card-title {
+    font-size: 1.1rem;
+  }
+  .button-text {
+    display: none;
+  }
+}
+
