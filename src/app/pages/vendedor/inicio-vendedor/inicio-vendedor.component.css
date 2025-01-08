@@ -4,6 +4,9 @@
   
   .sidenav {
     width: 250px;
+    background-color: #F0F0F0; /* Naranja */
+    color: black; /* Texto blanco */
+    
   }
   
   .mat-toolbar {
@@ -42,6 +45,6 @@
     flex: 1 1 auto; /* Permite que este elemento tome todo el espacio disponible */
   }
   
-  
+
 
   

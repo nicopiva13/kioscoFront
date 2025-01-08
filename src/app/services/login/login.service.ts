@@ -1,37 +1,44 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';  // Importar el environment
+import { API_URLS } from 'src/app/interfaces/modelos.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {  // Cambia 'login' a 'LoginService'
-
-  private apiUrl = environment.apiUrl;  // Usar el apiUrl del environment
+export class LoginService {  
+  private role: number | null = null;
 
   constructor(private http: HttpClient) { }
 
-  registerUser(nombre: string, usuario: string, pass: string, rol: string): Observable<any> {
-    const body = { nombre, usuario, pass, rol };
-    return this.http.post(`${this.apiUrl}/register`, body);
-  }
-  
-  loginUser(usuario: string, pass: string): Observable<any> {
-    const body = { usuario, pass };
-    return this.http.post(`${this.apiUrl}/login`, body);
-  }
-
-  setToken(token: string): void {
-    localStorage.setItem('token', token);
+  // Método para registrar un usuario
+  registrarUsuario(usuarioData: {
+    usu_usuario: string;
+    usu_password: string;
+    usu_nombre?: string;
+    usu_rol_id: number;
+  }): Observable<any> {
+    return this.http.post(API_URLS.usuarios.postRegistrarUsuario, usuarioData);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  // Método para iniciar sesión
+  iniciarSesion(credenciales: {
+    usu_usuario: string;
+    usu_password: string;
+  }): Observable<any> {
+    return this.http.post(API_URLS.usuarios.postLogin, credenciales);
+  }
+
+  setRole(role: number) {
+    this.role = role;
+  }
+
+  getRole(): number | null {
+    return this.role;
   }
 
   isLoggedIn(): boolean {
-    return this.getToken() !== null;
+    return !!localStorage.getItem('token');
   }
 
 }

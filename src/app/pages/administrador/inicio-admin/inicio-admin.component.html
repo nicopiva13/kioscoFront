@@ -1,0 +1,27 @@
+<mat-sidenav-container class="sidenav-container" style="background: url('/assets/fondo-login/fondo-estetic.png') no-repeat center center fixed; background-size: cover;">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
+        <mat-toolbar>Menú</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item (click)="showProducto()">Agregar Productos</a>
+            <a mat-list-item (click)="showCategoria()">Agregar Categorías</a>
+            <a mat-list-item (click)="showCliente()">Agregar Clientes</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-button (click)="logout()">Cerrar sesión</button>
+        </mat-toolbar>
+
+        <!-- Mostrar el componente Agregar Producto -->
+        <app-cargar-productos *ngIf="showAgregarProducto"></app-cargar-productos>
+        <!-- Mostrar el componente Agregar Categoría -->
+        <app-cargar-categorias *ngIf="showAgregarCategoria"></app-cargar-categorias>
+        <!-- Mostrar el componente Agregar Cliente -->
+        <app-cargar-vendedor *ngIf="showAgregarCliente"></app-cargar-vendedor>
+    </mat-sidenav-content>
+</mat-sidenav-container>

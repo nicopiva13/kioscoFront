@@ -1,0 +1,52 @@
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Espacio reducido entre los filtros */
+  margin-bottom: 20px;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los filtros */
+}
+
+.filter-select {
+  flex: 1;
+  max-width: 200px; /* Limita el ancho máximo */
+}
+
+.small-select .mat-form-field-wrapper {
+  padding-bottom: 5px; /* Reduce el espacio interno inferior */
+}
+
+.small-select .mat-select {
+  font-size: 0.875rem; /* Reduce el tamaño de la fuente */
+}
+
+.small-select.mat-form-field {
+  margin: 0; /* Quita márgenes externos */
+  height: 40px; /* Ajusta la altura total */
+  line-height: 40px;
+}
+
+.title {
+  font-size: 2.5rem; /* Tamaño de fuente grande */
+  text-align: center; /* Centrar texto */
+  margin-bottom: 40px; /* Espaciado inferior */
+  color: #333; /* Color gris oscuro */
+  font-weight: 600; /* Negrita */
+}
+
+.table-container {
+  margin-top: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+mat-table {
+  width: 100%;
+}

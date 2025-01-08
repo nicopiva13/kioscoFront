@@ -1,0 +1,115 @@
+/* Estilos globales para el formulario */
+mat-card {
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  mat-card-title {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #3f51b5;
+    font-weight: 600;
+    padding: 16px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  mat-card-content {
+    padding: 20px;
+  }
+  
+  /* Contenedor del formulario en fila */
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+  
+  /* Estilos para los campos del formulario */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Estilo de los inputs */
+  mat-input-element, mat-select {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  /* Botón de guardado */
+  button {
+    grid-column: span 2; /* Hace que el botón ocupe toda la fila */
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+    background-color: #3f51b5;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #303f9f;
+  }
+  
+  button:disabled {
+    background-color: #c5cae9;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo de los errores de validación */
+  mat-error {
+    color: #f44336;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  
+  /* Estilo de los labels */
+  mat-label {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Estilos del input de la URL de imagen */
+  input[type="url"] {
+    font-size: 1rem;
+  }
+  
+  /* Estilo para los selectores */
+  mat-select {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+  
+  /* Espaciado y bordes de la tarjeta */
+  mat-card-content {
+    padding: 20px 20px 30px;
+  }
+  
+  /* Estilo del botón de cargar imagen */
+  button:disabled {
+    background-color: #c5cae9;
+    cursor: not-allowed;
+  }
+  
+  /* Fondo del formulario */
+  form {
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  mat-form-field mat-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  

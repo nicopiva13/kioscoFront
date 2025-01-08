@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-title>Cargar Producto</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="productoForm.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="productoForm.get('nombre')?.hasError('maxlength')">
+          El nombre no puede superar los 255 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="descripcion"></textarea>
+        <mat-error *ngIf="productoForm.get('descripcion')?.hasError('required')">
+          La descripción es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Precio</mat-label>
+        <input type="number" matInput formControlName="precio" />
+        <mat-error *ngIf="productoForm.get('precio')?.hasError('required')">
+          El precio es obligatorio
+        </mat-error>
+        <mat-error *ngIf="productoForm.get('precio')?.hasError('min')">
+          El precio debe ser mayor o igual a 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Stock</mat-label>
+        <input type="number" matInput formControlName="stock" />
+        <mat-error *ngIf="productoForm.get('stock')?.hasError('required')">
+          El stock es obligatorio
+        </mat-error>
+        <mat-error *ngIf="productoForm.get('stock')?.hasError('min')">
+          El stock debe ser mayor o igual a 0
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Selector de categoría -->
+      <mat-form-field appearance="fill" class="category-select">
+        <mat-label>Filtrar por categoría</mat-label>
+        <mat-select [(value)]="selectedCategory" (selectionChange)="onCategoryChange($event)">
+          <mat-option [value]="">Todas las categorías</mat-option>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria_id">
+            {{ categoria.categoria_nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>URL de Imagen</mat-label>
+        <input matInput formControlName="imagenUrl" />
+        <mat-error *ngIf="productoForm.get('imagenUrl')?.hasError('required')">
+          La URL de la imagen es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="productoForm.invalid">
+        Guardar Producto
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

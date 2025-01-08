@@ -1,33 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';  // Importar el environment
+import { API_URLS } from 'src/app/interfaces/modelos.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductosService {
-  private apiUrl = `${environment.apiUrl}/productos`; // Agregamos /carrito aquí
 
-  constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) { }
 
-  getProductos(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  // Obtener todos los productos
+  getProductos(): Observable<any> {
+    return this.http.get(API_URLS.productos.getTodosProductos);
   }
+
+  // Obtener productos por categoría
+  getProductosPorCategoria(categoriaId: string): Observable<any> {
+    return this.http.get(API_URLS.productos.getProductosXCategoria(categoriaId));
+  }
+
+  // Crear un producto con fotos
+  crearProductoConFotos(producto: any, fotos: string[]): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = {
+      ...producto,
+      fotos,
+    };
+    return this.http.post(API_URLS.productos.postProducto, body, { headers });
+  }
+
+
   
-
-  deleteProducto(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  }
-  
-  createProduct(product: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, product);
-  }
-
-   // Obtener productos con categorías
-   getProductosConCategorias(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/con-categorias`);
-  }
 
 
 }

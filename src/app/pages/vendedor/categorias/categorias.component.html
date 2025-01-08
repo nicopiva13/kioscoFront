@@ -1,0 +1,45 @@
+<div class="header-container">
+  <!-- Título principal de la página -->
+  <h1 class="title">Categorías</h1>
+  <!-- Botón comentado que serviría para abrir un modal de agregar categoría -->
+  <!-- <button mat-raised-button color="primary" (click)="openAddCategoryModal()">Agregar Categoría</button> -->
+</div>
+
+<div class="table-container">
+  <!-- Tabla de categorías -->
+  <table mat-table [dataSource]="categories" class="mat-elevation-z8">
+    <!-- Columna: Nombre de la categoría -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let category"> {{category.categoria_nombre}} </td>
+    </ng-container>
+  
+    <!-- Columna: Acciones (Editar y Eliminar) -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let category">
+        <!-- Ícono para editar la categoría con tooltip -->
+        <!-- <button mat-icon-button (click)="editCategory(category)" color="primary"  matTooltip="Editar categoría" aria-label="Editar categoría">
+          <mat-icon>edit</mat-icon>
+        </button> -->
+        <!-- Ícono para eliminar la categoría con tooltip -->
+        <button mat-icon-button (click)="deleteCategory(category.categoria_id)" color="warn"  matTooltip="Eliminar categoría" aria-label="Eliminar categoría">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    
+  
+    <!-- Filas de encabezado y datos -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <!-- Spinner de carga: Se muestra mientras no hay categorías -->
+  <mat-spinner *ngIf="!categories.length" diameter="40"></mat-spinner>
+</div>
+
+<!-- Botón flotante para agregar categorías -->
+<button mat-fab color="primary" matTooltip="Agregar categoría" class="add-button" (click)="openAddCategoryModal()">
+  <mat-icon>add</mat-icon>
+</button>

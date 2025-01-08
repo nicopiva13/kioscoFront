@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container" style="background: url('/assets/fondo-login/fondo-estetic.png') no-repeat center center fixed; background-size: cover;">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
+      <mat-toolbar color="primary">Menú</mat-toolbar>
+      <mat-nav-list>
+        <!-- Menú para vendedores con lógica de mostrar componentes -->
+        <a mat-list-item (click)="showProductos()">Productos</a>
+        <a mat-list-item (click)="showCategorias()">Categorías</a>
+        <a mat-list-item (click)="showListaPrecios()">Lista de Precios</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button mat-button (click)="logout()">Cerrar sesión</button>
+      </mat-toolbar>
+  
+      <!-- Mostrar el componente Agregar Producto -->
+      <app-productos *ngIf="showAgregarProducto"></app-productos>
+      <!-- Mostrar el componente Agregar Categoría -->
+      <app-categorias *ngIf="showAgregarCategoria"></app-categorias>
+      <!-- Mostrar el componente Lista de Precios -->
+      <app-lista-precios *ngIf="showListasPrecios"></app-lista-precios>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

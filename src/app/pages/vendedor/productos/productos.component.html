@@ -1,0 +1,46 @@
+<div class="container">
+  <h1 class="title">Productos</h1>
+
+  <div class="cart-button-container open-cart-button">
+    <button mat-icon-button (click)="openCart()" matTooltip="Ver Carrito">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+
+  <!-- Selector de categoría -->
+  <mat-form-field appearance="fill" class="category-select">
+    <mat-label>Filtrar por categoría</mat-label>
+    <mat-select [(value)]="selectedCategory" (selectionChange)="onCategoryChange($event)">
+      <mat-option [value]="">Todas las categorías</mat-option>
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria_id">
+        {{ categoria.categoria_nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Verificación si hay productos filtrados -->
+  <div *ngIf="filteredProducts.length > 0" class="products-grid">
+    <mat-card *ngFor="let product of filteredProducts" class="product-card">
+      <img mat-card-image [src]="product.fotos?.[0] || 'assets/images/default-product.jpg'" alt="Imagen del producto">
+      <mat-card-content>
+        <h1>{{ product.nombre }}</h1>
+        <p>{{ product.descripcion }}</p>
+        <p class="price">{{ product.precio | currency }}</p>
+        <p *ngIf="product.stock > 0" class="stock">Stock disponible: {{ product.stock }}</p>
+        <p *ngIf="product.stock === 0" class="no-stock">Sin stock</p>
+      </mat-card-content>
+
+      <div class="button-container">
+        <button mat-icon-button (click)="addToCart(product)" *ngIf="!product.addedToCart && (product.stock > 0)" matTooltip="Agregar al carrito">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Mensaje cuando no hay productos -->
+  <div *ngIf="filteredProducts.length === 0" class="no-products">
+    <img src="assets/images/sin-categorias.png" alt="No hay productos para esta categoría">
+    <p>No hay productos disponibles para la categoría seleccionada.</p>
+  </div>
+</div>

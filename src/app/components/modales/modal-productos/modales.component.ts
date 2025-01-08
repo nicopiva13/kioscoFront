@@ -40,7 +40,7 @@ export class ModalesComponent {
 
   loadCategories(): void {
     // Cargar las categorías desde el servicio
-    this.categoriasService.getCategories().subscribe(
+    this.categoriasService.getTodasCategorias().subscribe(
       (data) => {
         this.categories = data;
       },

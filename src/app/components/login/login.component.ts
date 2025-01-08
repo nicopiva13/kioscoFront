@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';  // Importa SweetAlert2
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,42 +9,53 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  @Output() loginSuccess = new EventEmitter<number>(); // Emite el rol del usuario
+  loginForm: FormGroup; // Formulario reactivo
+  errorMessage: string = ''; // Mensaje de error, si ocurre
 
-  usuario: string = '';
-  pass: string = '';
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+  ) {
+    // Inicializa el formulario
+    this.loginForm = this.fb.group({
+      usu_usuario: ['', [Validators.required]], // Campo usuario requerido
+      usu_password: ['', [Validators.required, Validators.minLength(6)]] // Contraseña requerida con mínimo 6 caracteres
+    });
+  }
 
-  constructor(private authService: LoginService, private router: Router) { }
-
-  onLogin(): void {
-    this.authService.loginUser(this.usuario, this.pass).subscribe(
-      (response: any) => {
-        console.log('Login exitoso', response);
-        this.authService.setToken(response.token);
-
-        // Reemplazamos el alert por una notificación visual con SweetAlert2
-        Swal.fire({
-          title: '¡Login exitoso!',
-          text: 'Redirigiendo a productos...',
-          icon: 'success',
-          confirmButtonText: 'Continuar',
-          confirmButtonColor: '#ffa726',  // Color del botón de confirmación
-          timer: 2000  // Se cerrará automáticamente en 2 segundos
-        }).then(() => {
-          this.router.navigate(['/productos']);  // Redirige a /productos después de la alerta
-        });
-      },
-      error => {
-        console.error('Error en el login', error);
-
-        // Reemplazamos el alert por una notificación visual en caso de error
-        Swal.fire({
-          title: 'Error',
-          text: 'Usuario o contraseña incorrectos',
-          icon: 'error',
-          confirmButtonText: 'Intentar de nuevo',
-          confirmButtonColor: '#d33',  // Color del botón en caso de error
-        });
-      }
-    );
+  // Método para manejar el envío del formulario
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const credenciales = this.loginForm.value;
+  
+      this.loginService.iniciarSesion(credenciales).subscribe(
+        (response) => {
+          console.log('Respuesta del login:', response);
+          
+          // Guarda el token y el rol en el servicio
+          this.loginService.setRole(response.usuario.usu_rol_id);
+  
+          // Emitir el rol
+          this.loginSuccess.emit(response.usuario.usu_rol_id);
+  
+          // Redirigir según el rol
+          if (response.usuario.usu_rol_id === 1) {
+            console.log('Redirigiendo a /inicio-admin');
+            this.router.navigateByUrl('/inicio-admin');
+          } else if (response.usuario.usu_rol_id === 2) {
+            console.log('Redirigiendo a /inicio-vendedor');
+            this.router.navigateByUrl('/inicio-vendedor');
+          }          
+        },
+        (error) => {
+          console.error('Error al iniciar sesión:', error);
+          this.errorMessage = error.error?.mensaje || 'Error al iniciar sesión.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Por favor, completa todos los campos correctamente.';
+    }
   }
 }

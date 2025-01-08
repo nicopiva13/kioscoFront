@@ -1,4 +1,4 @@
-/* Fondo suave en tono oscuro */
+/* Fondo de la página con colores cálidos y diseño alusivo a un kiosko */
 body {
     margin: 0;
     padding: 0;
@@ -6,122 +6,85 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-/* Contenedor del registro */
-.register-container {
+    font-family: 'Arial', sans-serif;
+    background: url('https://example.com/kiosko-pattern.png') no-repeat center center fixed; /* Imagen de fondo alusiva a un kiosko */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
+  }
+  
+  /* Contenedor del registro centrado */
+  .register-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-}
-
-/* Caja del registro con diseño minimalista */
-.register-box {
-    background-color: white;
-    padding: 60px;
+  }
+  
+  /* Caja del formulario con sombras más intensas */
+  .register-box {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente para mostrar un poco del fondo */
+    padding: 50px 40px;
     border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
     text-align: center;
-    max-width: 360px;
     width: 100%;
-}
-
-/* Título con tipografía moderna */
-.register-box h2 {
-    font-size: 28px;
-    font-weight: 500;
+    max-width: 400px;
+  }
+  
+  /* Título del formulario */
+  .register-box h2 {
     margin-bottom: 40px;
-    color: #222;
-}
-
-/* Inputs sin bordes iniciales y cambio con animación */
-.register-box input[type="text"],
-.register-box input[type="password"] {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Inputs con más espaciado */
+  .register-box input[type="text"],
+  .register-box input[type="password"],
+  .register-box select {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 2px solid #ddd;
-    background-color: #fafafa;
-    transition: border-color 0.3s ease;
+    padding: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     font-size: 16px;
+    color: #555;
+    background-color: #f7f7f7;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  /* Efecto hover en los inputs */
+  .register-box input:hover,
+  .register-box select:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Color del input al enfocarse */
+  .register-box input:focus,
+  .register-box select:focus {
+    border-color: #ffa726; /* Un tono cálido tipo naranja para simular un kiosko */
     outline: none;
-}
-
-.register-box input[type="text"]:focus,
-.register-box input[type="password"]:focus {
-    border-bottom-color: #007BFF; /* Color de acento */
-}
-
-/* Botón de registro estilizado con hover y transición */
-.register-box button {
+    background-color: #fff;
+  }
+  
+  /* Botón con estilo más atractivo */
+  .register-box button {
     width: 100%;
     padding: 15px;
-    background-color: #007BFF;
-    color: white;
+    background-color: #ffa726; /* Naranja vibrante */
     border: none;
     border-radius: 8px;
+    color: white;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Efecto hover en el botón */
-.register-box button:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px); /* Efecto de elevación al hover */
-}
-
-/* Enlace al login debajo del botón */
-.register-box .login-link {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.register-box .login-link:hover {
-    color: #0056b3;
-}
-
-/* Añadir un mensaje o separador */
-.register-box .separator {
-    margin: 20px 0;
-    font-size: 14px;
-    color: #888;
-}
-
-
-
-.password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-  
-  .password-container input {
-    width: 100%;
-    /* padding-right: 40px;   */
+    transition: background-color 0.3s, box-shadow 0.3s;
   }
   
-  .eye-icon {
-    position: absolute;
-    right: 5px;
-    cursor: pointer;
-    font-size: 28px;
-    color: #888;
-    transition: color 0.3s ease;
-    margin-right: -30px;
-  }
-  
-  .eye-icon:hover {
-    color: #555;  /* Cambia el color al pasar el mouse por encima */
+  /* Efecto hover y sombra en el botón */
+  .register-box button:hover {
+    background-color: #fb8c00; /* Un tono naranja más oscuro */
+    box-shadow: 0 4px 15px rgba(255, 165, 38, 0.4); /* Sombra en hover */
   }
   

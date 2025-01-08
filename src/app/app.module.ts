@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductosComponent } from './pages/productos/productos.component';
-import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ProductosComponent } from './pages/vendedor/productos/productos.component';
+import { CategoriasComponent } from './pages/vendedor/categorias/categorias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';  // Importa HttpClientModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // Importar FormsModule y ReactiveFormsModule
@@ -25,10 +25,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ModalCategoriasComponent } from './components/modales/modal-categorias/modal-categorias.component';
-import { ListaPreciosComponent } from './pages/lista-precios/lista-precios.component'; 
+import { ListaPreciosComponent } from './pages/vendedor/lista-precios/lista-precios.component'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalCarritoComponent } from './components/modales/modal-carrito/modal-carrito.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CargarProductosComponent } from './pages/administrador/cargar-productos/cargar-productos.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CargarCategoriasComponent } from './pages/administrador/cargar-categorias/cargar-categorias.component';
+import { CargarVendedorComponent } from './pages/administrador/cargar-vendedor/cargar-vendedor.component';
+import { InicioAdminComponent } from './pages/administrador/inicio-admin/inicio-admin.component';
+import { InicioVendedorComponent } from './pages/vendedor/inicio-vendedor/inicio-vendedor.component';
 
 
 @NgModule({
@@ -41,7 +47,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ModalesComponent,
     ModalCategoriasComponent,
     ListaPreciosComponent,
-    ModalCarritoComponent
+    ModalCarritoComponent,
+    CargarProductosComponent,
+    CargarCategoriasComponent,
+    CargarVendedorComponent,
+    InicioAdminComponent,
+    InicioVendedorComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +74,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

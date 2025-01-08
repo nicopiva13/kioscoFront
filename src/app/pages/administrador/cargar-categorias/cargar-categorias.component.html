@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title>Cargar Categoría</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" />
+            <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('required')">
+              El nombre es obligatorio
+            </mat-error>
+            <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('maxlength')">
+              El nombre no puede superar los 255 caracteres
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="button-container">
+          <button mat-raised-button color="primary" [disabled]="categoriaForm.invalid" class="submit-btn">
+            Crear Categoría
+          </button>
+        </div>
+  
+        <div *ngIf="mensajeError" class="error-message">
+          {{ mensajeError }}
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

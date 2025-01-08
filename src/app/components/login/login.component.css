@@ -7,7 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     font-family: 'Arial', sans-serif;
-    background: url('https://example.com/kiosko-pattern.png') no-repeat center center fixed; /* Imagen de fondo alusiva a un kiosko */
+    background: url('/assets/fondo-login/fondo-estetic.png') no-repeat center center fixed, red;
     background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
   }
   

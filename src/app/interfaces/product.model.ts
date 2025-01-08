@@ -6,5 +6,6 @@ export interface Product {
     stock: number;
     imagen: string;
     addedToCart?: boolean; // Agrega esta línea,
-    quantity: number
+    quantity: number;
+    fotos?: string;
 }

@@ -1,34 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';  // Importar el environment
+import { API_URLS } from 'src/app/interfaces/modelos.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
-  
-  private apiUrl = `${environment.apiUrl}/categorias`; // Agregamos /carrito aquí
 
   constructor(private http: HttpClient) { }
 
-  // Método para obtener categorías desde el backend
-  getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  // Método para obtener todas las categorías desde el backend
+  getTodasCategorias(): Observable<any> {
+    return this.http.get(API_URLS.categorias.getTodasCategorias);
   }
 
-  createCategory(category: any): Observable<any> {
-    return this.http.post(this.apiUrl, category);
+  // Método para crear una nueva categoría
+  postCategoria(categoriaData: any): Observable<any> {
+    return this.http.post(API_URLS.categorias.postCategoria, categoriaData);
   }
 
-  updateCategory(id: number, category: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, category);
+  // Método para actualizar una categoría usando el ID como parámetro
+  // actualizarCategoria(categoriaId: string, categoriaData: any): Observable<any> {
+  //   return this.http.put(API_URLS.categorias.putActualizarCategoria(categoriaId), categoriaData);
+  // }
+
+  // Método para eliminar una categoría usando el ID como parámetro
+  eliminarCategoria(categoriaId: string): Observable<any> {
+    return this.http.delete(API_URLS.categorias.deleteEliminarCategoria(categoriaId));
   }
-
-  deleteCategory(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-
-
-
 }

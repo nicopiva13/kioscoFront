@@ -1,0 +1,50 @@
+/* Estilo global del formulario */
+mat-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3f51b5;
+    margin-bottom: 1rem;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-field {
+    width: 100%;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .submit-btn {
+    width: 200px;
+  }
+  
+  .error-message {
+    color: #f44336;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  /* Estilos para el mat-error */
+  mat-error {
+    font-size: 0.9rem;
+    color: #f44336;
+    margin-top: 0.5rem;
+  }
+  
